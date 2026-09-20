@@ -140,6 +140,15 @@
   }
   .news-item .title{flex:1;font-size:15px;}
   .news-item .date{font-size:13px;color:var(--text-mid);flex-shrink:0;}
+  details.news-detail{border-bottom:1px solid var(--border);}
+  details.news-detail > summary.news-item{border-bottom:none;cursor:pointer;list-style:none;}
+  details.news-detail > summary.news-item::-webkit-details-marker{display:none;}
+  details.news-detail > summary.news-item .title::after{content:" ▾";color:var(--text-mid);font-size:12px;}
+  details.news-detail[open] > summary.news-item .title::after{content:" ▴";}
+  .news-body{padding:4px 4px 24px;}
+  .news-body p{font-size:14px;color:var(--text-mid);margin-bottom:14px;}
+  .news-body img{display:block;width:100%;height:auto;border-radius:6px;border:1px solid var(--border);margin-bottom:12px;}
+  .news-body .cap{font-size:12px;color:var(--text-mid);margin:-4px 0 18px;}
 
   /* 주보 다운로드 */
   .bulletin-list{border-top:2px solid var(--rotary-blue);}
@@ -406,19 +415,24 @@
     <div class="news-list">
       <div class="news-item">
         <span class="tag">공지</span>
-        <span class="title">2026년 정기총회 안내</span>
-        <span class="date">2026.03.02</span>
+        <span class="title">서울무악로타리 가을 골프대회 개최</span>
+        <span class="date">2026.09.19</span>
       </div>
-      <div class="news-item">
-        <span class="tag">봉사</span>
-        <span class="title">지역아동센터 후원 물품 전달식</span>
-        <span class="date">2026.02.18</span>
-      </div>
-      <div class="news-item">
-        <span class="tag">행사</span>
-        <span class="title">신입회원 입회식 개최</span>
-        <span class="date">2026.01.27</span>
-      </div>
+      <details class="news-detail">
+        <summary class="news-item">
+          <span class="tag">행사</span>
+          <span class="title">제32대 이두원 회장 취임</span>
+          <span class="date">2026.06.23</span>
+        </summary>
+        <div class="news-body">
+          <p>제31대 안은숙 회장 이임식 및 제32대 이두원 회장 취임식<br>2026년 6월 23일(화) 18시 30분 · 서울클럽 2층 한라산룸</p>
+          <a href="events/inauguration-2026/group-photo.jpg" target="_blank" rel="noopener"><img src="events/inauguration-2026/group-photo.jpg" alt="제32대 이두원 회장 취임식 단체사진" loading="lazy"></a>
+          <div class="cap">취임식 단체사진</div>
+          <a href="events/inauguration-2026/program-1.jpg" target="_blank" rel="noopener"><img src="events/inauguration-2026/program-1.jpg" alt="취임식 프로그램 (표지 및 시상·특별공연)" loading="lazy"></a>
+          <a href="events/inauguration-2026/program-2.jpg" target="_blank" rel="noopener"><img src="events/inauguration-2026/program-2.jpg" alt="취임식 프로그램 (식순, 회장 소개 및 임원)" loading="lazy"></a>
+          <div class="cap">취임식 프로그램 (사진을 클릭하면 원본 크기로 볼 수 있습니다)</div>
+        </div>
+      </details>
     </div>
   </div>
 </section>
@@ -672,9 +686,9 @@
     <p class="section-sub">Location & Contact</p>
     <div class="map-box">지도 영역 (주소 입력 시 삽입)</div>
     <div class="contact-info">
-      <p><strong>주소</strong> 서울특별시 서대문구 (상세주소 입력)</p>
-      <p><strong>전화</strong> 02-000-0000</p>
-      <p><strong>이메일</strong> info@muakrotary.or.kr</p>
+      <p><strong>사무국 주소</strong> 서울시 서대문구 연세로50, 연세동문회관 4층 서울무악로타리클럽</p>
+      <p><strong>사무국 전화</strong> 02-393-0987</p>
+      <p><strong>사무국 이메일</strong> smrc3650@hanmail.net</p>
     </div>
   </div>
 </section>
