@@ -129,26 +129,30 @@
   .committee-card table td.name-cell{font-weight:700;}
 
   /* 활동소식 / 공지 */
-  .news-list{border-top:2px solid var(--rotary-blue);}
-  .news-item{
-    display:flex;justify-content:space-between;align-items:center;
-    padding:16px 4px;border-bottom:1px solid var(--border);gap:16px;
-  }
-  .news-item .tag{
-    font-size:12px;font-weight:700;color:#fff;background:var(--rotary-azure);
-    padding:3px 10px;border-radius:4px;flex-shrink:0;
-  }
-  .news-item .title{flex:1;font-size:15px;}
-  .news-item .date{font-size:13px;color:var(--text-mid);flex-shrink:0;}
-  details.news-detail{border-bottom:1px solid var(--border);}
-  details.news-detail > summary.news-item{border-bottom:none;cursor:pointer;list-style:none;}
-  details.news-detail > summary.news-item::-webkit-details-marker{display:none;}
-  details.news-detail > summary.news-item .title::after{content:" ▾";color:var(--text-mid);font-size:12px;}
-  details.news-detail[open] > summary.news-item .title::after{content:" ▴";}
-  .news-body{padding:4px 4px 24px;}
-  .news-body p{font-size:14px;color:var(--text-mid);margin-bottom:14px;}
-  .news-body img{display:block;width:100%;height:auto;border-radius:6px;border:1px solid var(--border);margin-bottom:12px;}
-  .news-body .cap{font-size:12px;color:var(--text-mid);margin:-4px 0 18px;}
+  .board-tools{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:14px;}
+  .board-count{font-size:14px;color:var(--text-mid);}
+  .board-search{display:flex;gap:6px;}
+  .board-search select,.board-search input{height:38px;border:1px solid var(--border);border-radius:4px;background:#fff;padding:0 10px;font:inherit;font-size:13px;}
+  .board-search input{width:210px;}
+  .board-search button{height:38px;border:0;border-radius:4px;padding:0 16px;background:var(--rotary-blue);color:#fff;font-weight:700;cursor:pointer;}
+  .news-board{background:#fff;border-top:2px solid var(--rotary-blue);}
+  .board-row{display:grid;grid-template-columns:74px minmax(0,1fr) 72px 100px 100px;align-items:center;min-height:58px;border-bottom:1px solid var(--border);}
+  .board-row > span{padding:12px 10px;text-align:center;font-size:14px;}
+  .board-head{min-height:48px;background:#F8F9FB;font-weight:700;color:#394150;}
+  .board-title{text-align:left!important;font-weight:600;}
+  .board-title .category{color:var(--rotary-azure);font-size:12px;margin-right:8px;}
+  .pin{display:inline-block;background:var(--rotary-blue);color:#fff;font-size:11px;font-weight:700;padding:2px 8px;border-radius:3px;}
+  details.news-detail > summary{cursor:pointer;list-style:none;}
+  details.news-detail > summary::-webkit-details-marker{display:none;}
+  details.news-detail > summary .board-title::after{content:" ▾";color:var(--text-mid);font-size:11px;}
+  details.news-detail[open] > summary{background:#F5F9FF;}
+  details.news-detail[open] > summary .board-title::after{content:" ▴";}
+  .news-body{padding:28px 110px 30px;border-bottom:1px solid var(--border);background:#FCFCFD;}
+  .news-body h3{font-size:18px;color:var(--rotary-blue);margin-bottom:14px;}
+  .news-body p{font-size:14px;color:var(--text-mid);margin-bottom:12px;}
+  .news-body ul{list-style:disc;margin:8px 0 18px 20px;color:var(--text-mid);font-size:14px;}
+  .sample-note{margin-top:16px;padding:12px 14px;border-radius:5px;background:#FFF8E8;color:#765719;font-size:13px;}
+  .board-empty{display:none;padding:32px;text-align:center;color:var(--text-mid);border-bottom:1px solid var(--border);}
 
   /* 주보 다운로드 */
   .bulletin-list{border-top:2px solid var(--rotary-blue);}
@@ -201,6 +205,14 @@
     .committee-grid{grid-template-columns:1fr;}
     .hero h1{font-size:24px;}
     table th{width:110px;font-size:13px;}
+    .board-tools{align-items:flex-start;flex-direction:column;}
+    .board-search{width:100%;}
+    .board-search input{width:auto;flex:1;min-width:0;}
+    .board-row{grid-template-columns:58px minmax(0,1fr) 82px;}
+    .board-row .attachment,.board-row .author{display:none;}
+    .board-row > span{padding:12px 7px;font-size:12px;}
+    .board-title{font-size:13px!important;}
+    .news-body{padding:22px 18px 24px;}
   }
 </style>
 </head>
@@ -412,27 +424,22 @@
   <div class="container">
     <h2 class="section-title">활동소식 및 공지사항</h2>
     <p class="section-sub">News & Notices</p>
-    <div class="news-list">
-      <div class="news-item">
-        <span class="tag">공지</span>
-        <span class="title">서울무악로타리 가을 골프대회 개최</span>
-        <span class="date">2026.09.19</span>
-      </div>
-      <details class="news-detail">
-        <summary class="news-item">
-          <span class="tag">행사</span>
-          <span class="title">제32대 이두원 회장 취임</span>
-          <span class="date">2026.06.23</span>
-        </summary>
-        <div class="news-body">
-          <p>제31대 안은숙 회장 이임식 및 제32대 이두원 회장 취임식<br>2026년 6월 23일(화) 18시 30분 · 서울클럽 2층 한라산룸</p>
-          <a href="events/inauguration-2026/group-photo.jpg" target="_blank" rel="noopener"><img src="events/inauguration-2026/group-photo.jpg" alt="제32대 이두원 회장 취임식 단체사진" loading="lazy"></a>
-          <div class="cap">취임식 단체사진</div>
-          <a href="events/inauguration-2026/program-1.jpg" target="_blank" rel="noopener"><img src="events/inauguration-2026/program-1.jpg" alt="취임식 프로그램 (표지 및 시상·특별공연)" loading="lazy"></a>
-          <a href="events/inauguration-2026/program-2.jpg" target="_blank" rel="noopener"><img src="events/inauguration-2026/program-2.jpg" alt="취임식 프로그램 (식순, 회장 소개 및 임원)" loading="lazy"></a>
-          <div class="cap">취임식 프로그램 (사진을 클릭하면 원본 크기로 볼 수 있습니다)</div>
-        </div>
-      </details>
+    <div class="board-tools">
+      <p class="board-count">전체 <strong>5</strong>건</p>
+      <form class="board-search" onsubmit="return false;" aria-label="게시물 검색">
+        <select aria-label="검색 범위"><option>전체</option><option>제목</option><option>내용</option></select>
+        <input type="search" placeholder="검색어를 입력해 주세요" aria-label="검색어">
+        <button type="submit">검색</button>
+      </form>
+    </div>
+    <div class="news-board">
+      <div class="board-row board-head" aria-hidden="true"><span>번호</span><span>제목</span><span class="attachment">첨부</span><span class="author">작성자</span><span>등록일</span></div>
+      <details class="news-detail"><summary class="board-row"><span><b class="pin">공지</b></span><span class="board-title"><b class="category">[공지]</b>2026-27년도 정기총회 개최 안내</span><span class="attachment">-</span><span class="author">관리자</span><span>26.09.28</span></summary><div class="news-body"><h3>2026-27년도 정기총회 개최 안내</h3><p>회원 여러분의 건승을 기원합니다. 다음과 같이 정기총회를 개최하오니 많은 참석을 부탁드립니다.</p><ul><li>일시: 2026년 10월 13일(화) 오후 6시 30분</li><li>장소: 서울클럽 2층 한라산룸</li><li>주요 안건: 상반기 활동 보고 및 하반기 사업계획 심의</li></ul><p>참석 여부는 사무국으로 알려주시기 바랍니다.</p><div class="sample-note">※ 현재 화면 구성을 확인하기 위한 샘플 게시물입니다.</div></div></details>
+      <details class="news-detail"><summary class="board-row"><span><b class="pin">공지</b></span><span class="board-title"><b class="category">[봉사]</b>사랑의 연탄 나눔 봉사 참가 신청</span><span class="attachment">📎</span><span class="author">봉사위원회</span><span>26.09.21</span></summary><div class="news-body"><h3>사랑의 연탄 나눔 봉사 참가 신청</h3><p>지역사회 이웃과 따뜻한 겨울을 나누기 위한 연탄 나눔 봉사를 진행합니다.</p><ul><li>일시: 2026년 11월 7일(토) 오전 9시</li><li>집결 장소: 서대문구 홍제동 주민센터 앞</li><li>준비물: 편한 복장, 운동화, 개인 장갑</li></ul><p>회원 및 가족 여러분의 많은 참여를 바랍니다.</p><div class="sample-note">※ 현재 화면 구성을 확인하기 위한 샘플 게시물입니다.</div></div></details>
+      <details class="news-detail"><summary class="board-row"><span>3</span><span class="board-title"><b class="category">[행사]</b>서울무악로타리 가을 친선 골프대회</span><span class="attachment">-</span><span class="author">친교위원회</span><span>26.09.19</span></summary><div class="news-body"><h3>서울무악로타리 가을 친선 골프대회</h3><p>회원 간 친목과 화합을 위한 가을 친선 골프대회를 개최합니다.</p><ul><li>일시: 2026년 10월 24일(토) 오전 11시</li><li>장소: 추후 참가자에게 개별 안내</li><li>신청 마감: 2026년 10월 10일</li></ul><div class="sample-note">※ 현재 화면 구성을 확인하기 위한 샘플 게시물입니다.</div></div></details>
+      <details class="news-detail"><summary class="board-row"><span>2</span><span class="board-title"><b class="category">[소식]</b>9월 정기모임 및 신입회원 환영식</span><span class="attachment">📎</span><span class="author">관리자</span><span>26.09.12</span></summary><div class="news-body"><h3>9월 정기모임 및 신입회원 환영식</h3><p>9월 정기모임과 함께 신입회원 환영식을 진행했습니다. 참석해 주신 모든 회원께 감사드립니다.</p><p>앞으로도 회원 여러분의 적극적인 참여와 따뜻한 교류를 기대합니다.</p><div class="sample-note">※ 현재 화면 구성을 확인하기 위한 샘플 게시물입니다.</div></div></details>
+      <details class="news-detail"><summary class="board-row"><span>1</span><span class="board-title"><b class="category">[안내]</b>클럽 홈페이지 새 단장 안내</span><span class="attachment">-</span><span class="author">홍보위원회</span><span>26.09.01</span></summary><div class="news-body"><h3>클럽 홈페이지 새 단장 안내</h3><p>서울무악로타리클럽 홈페이지를 새롭게 단장했습니다. 클럽 소개, 활동소식, 주보, 정기모임 안내를 한곳에서 확인하실 수 있습니다.</p><p>더 나은 홈페이지를 위해 회원 여러분의 의견을 기다립니다.</p><div class="sample-note">※ 현재 화면 구성을 확인하기 위한 샘플 게시물입니다.</div></div></details>
+      <p class="board-empty">검색 결과가 없습니다.</p>
     </div>
   </div>
 </section>
@@ -698,6 +705,31 @@
   <p>국제로타리 3690지구 · Rotary International District 3690</p>
   <p style="margin-top:10px;">© 2026 Seoul Muak Rotary Club. All rights reserved.</p>
 </footer>
+
+<script>
+  const newsSearchForm = document.querySelector('.board-search');
+  const newsItems = [...document.querySelectorAll('.news-detail')];
+  const newsCount = document.querySelector('.board-count strong');
+  const newsEmpty = document.querySelector('.board-empty');
+
+  newsSearchForm.addEventListener('submit', () => {
+    const scope = newsSearchForm.querySelector('select').value;
+    const keyword = newsSearchForm.querySelector('input').value.trim().toLowerCase();
+    let visibleCount = 0;
+
+    newsItems.forEach((item) => {
+      const title = item.querySelector('.board-title').textContent.toLowerCase();
+      const body = item.querySelector('.news-body').textContent.toLowerCase();
+      const haystack = scope === '제목' ? title : scope === '내용' ? body : title + ' ' + body;
+      const matched = !keyword || haystack.includes(keyword);
+      item.style.display = matched ? '' : 'none';
+      if (matched) visibleCount += 1;
+    });
+
+    newsCount.textContent = visibleCount;
+    newsEmpty.style.display = visibleCount ? 'none' : 'block';
+  });
+</script>
 
 </body>
 </html>
