@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>서울무악로타리클럽</title>
+<link rel="icon" href="assets/logos/seoul-muak-official-ko.png" type="image/png">
 <style>
   :root{
     --rotary-blue:#17458F;
@@ -15,6 +16,7 @@
     --border:#E3E6EB;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;scroll-padding-top:84px;}
   body{
     font-family:"Malgun Gothic","Apple SD Gothic Neo",-apple-system,BlinkMacSystemFont,sans-serif;
     color:var(--text-dark);
@@ -37,21 +39,13 @@
     padding:16px 20px;max-width:1100px;margin:0 auto;
   }
   .logo{
-    display:flex;align-items:center;gap:10px;
-    font-size:20px;font-weight:700;color:var(--rotary-blue);
+    display:flex;align-items:center;min-width:0;
   }
-  .logo-name{display:flex;flex-direction:column;line-height:1.2;white-space:nowrap;}
-  .logo-name-en{font-size:10px;font-weight:600;letter-spacing:.2px;margin-top:3px;}
-  .logo-mark{
-    width:34px;height:34px;border-radius:50%;
-    background:var(--rotary-azure);
-    display:flex;align-items:center;justify-content:center;
-    color:var(--rotary-gold);font-size:16px;font-weight:800;
-  }
+  .logo img{width:220px;height:auto;max-height:54px;object-fit:contain;object-position:left center;}
   nav ul{display:flex;gap:28px;}
   nav a{font-size:15px;font-weight:500;color:var(--text-dark);}
   nav a:hover{color:var(--rotary-azure);}
-  .menu-toggle{display:none;background:none;border:none;font-size:24px;cursor:pointer;}
+  .menu-toggle{display:none;background:none;border:0;color:var(--rotary-blue);font-size:27px;line-height:1;cursor:pointer;padding:8px;}
 
   /* Hero */
   .hero{
@@ -62,6 +56,12 @@
   .hero-name-en{font-size:15px;font-weight:600;color:#DCE7F7;margin:2px 0 14px;}
   .hero p{font-size:16px;color:#DCE7F7;margin:0 auto;}
   .hero-motto{white-space:nowrap;}
+  .hero-brand{
+    width:min(460px,92%);margin:0 auto 14px;padding:14px 24px;
+    border-radius:12px;background:#fff;box-shadow:0 8px 24px rgba(0,0,0,.13);
+  }
+  .hero-brand img{width:100%;height:auto;max-height:96px;object-fit:contain;}
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
   .hero .badge{
     display:inline-block;background:var(--rotary-gold);color:#1E2430;
     font-size:13px;font-weight:700;padding:5px 14px;border-radius:20px;margin-bottom:16px;
@@ -69,6 +69,7 @@
 
   /* Section common */
   section{padding:64px 0;}
+  main,section[id]{scroll-margin-top:84px;}
   .section-title{
     font-size:24px;font-weight:800;margin-bottom:8px;color:var(--rotary-blue);
   }
@@ -112,6 +113,14 @@
     padding:4px 10px;border-radius:20px;
   }
   .top-officer-card .name{font-size:19px;font-weight:800;margin-top:6px;}
+  .executive-officers{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:0 0 32px;
+  }
+  .executive-card{
+    background:#fff;border:1px solid var(--border);border-radius:10px;padding:18px 20px;
+  }
+  .executive-card .role{font-size:13px;font-weight:700;color:var(--rotary-azure);margin-bottom:5px;}
+  .executive-card .name{font-size:16px;font-weight:800;color:var(--text-dark);}
   .committee-grid{
     display:grid;grid-template-columns:repeat(2,1fr);gap:20px;
   }
@@ -189,6 +198,7 @@
     padding:14px 16px;border:1px solid var(--border);font-size:14px;text-align:left;
   }
   table th{background:var(--rotary-blue);color:#fff;font-weight:600;width:140px;}
+  .past-presidents-table th,.past-presidents-table td{text-align:center;}
 
   /* 오시는길 */
   .map-box{
@@ -206,12 +216,20 @@
   footer .fname{color:#fff;font-weight:700;margin-bottom:8px;font-size:15px;}
 
   @media (max-width:768px){
-    nav{display:none;}
+    .header-inner{position:relative;padding:12px 16px;}
+    .logo img{width:min(210px,64vw);max-height:48px;}
+    nav{display:none;position:absolute;top:100%;left:0;right:0;background:#fff;border-top:1px solid var(--border);border-bottom:1px solid var(--border);box-shadow:0 8px 18px rgba(0,0,0,.08);}
+    nav.mobile-open{display:block;}
+    nav ul{display:grid;grid-template-columns:repeat(2,1fr);gap:0;padding:8px 14px 14px;}
+    nav a{display:block;padding:11px 10px;border-bottom:1px solid var(--border);font-size:14px;}
     .menu-toggle{display:block;}
     .info-grid{grid-template-columns:1fr;}
     .top-officers{grid-template-columns:1fr;}
+    .executive-officers{grid-template-columns:1fr 1fr;}
     .committee-grid{grid-template-columns:1fr;}
     .hero h1{font-size:24px;}
+    .hero{padding:52px 16px;}
+    .hero-brand{padding:12px 18px;}
     .hero-name-en{font-size:13px;}
     .hero-motto{white-space:normal;}
     table th{width:110px;font-size:13px;}
@@ -226,20 +244,24 @@
     .news-gallery{grid-template-columns:1fr;}
     .news-gallery img{height:auto;}
   }
+  @media (max-width:480px){
+    .container{padding:0 16px;}
+    section{padding:52px 0;}
+    .executive-officers{grid-template-columns:1fr;}
+    .board-search select{max-width:88px;}
+    .bulletin-item{align-items:flex-start;}
+    .bulletin-item .b-download{width:100%;text-align:center;}
+  }
 </style>
 </head>
 <body>
 
 <header>
   <div class="header-inner">
-    <div class="logo">
-      <div class="logo-mark">R</div>
-      <div class="logo-name">
-        <span>서울무악로타리클럽</span>
-        <span class="logo-name-en">Rotary Club of Seoul-Muak</span>
-      </div>
-    </div>
-    <nav>
+    <a class="logo" href="./" aria-label="Seoul-Muak Rotary Club 홈">
+      <img src="assets/logos/seoul-muak-official-en.png" alt="Seoul-Muak Rotary Club">
+    </a>
+    <nav id="site-nav" aria-label="주요 메뉴">
       <ul>
         <li><a href="#greeting">인사말</a></li>
         <li><a href="#about">클럽소개</a></li>
@@ -251,16 +273,18 @@
         <li><a href="#location">오시는길</a></li>
       </ul>
     </nav>
-    <button class="menu-toggle">☰</button>
+    <button class="menu-toggle" type="button" aria-controls="site-nav" aria-expanded="false" aria-label="메뉴 열기">☰</button>
   </div>
 </header>
 
+<main id="top">
 <section class="hero">
   <div class="container">
-    <div class="badge">국제로타리 3690지구</div>
-    <h1>서울무악로타리클럽</h1>
-    <div class="hero-name-en">Rotary Club of Seoul-Muak</div>
-    <p class="hero-motto">초아의 봉사 (Service About Self) — 봉사를 통해 더 나은 세상을 만들어가는 사람들의 모임입니다.</p>
+    <div class="badge">국제로타리 3650지구</div>
+    <h1 class="sr-only">서울무악로타리클럽</h1>
+    <div class="hero-brand"><img src="assets/logos/seoul-muak-official-ko.png" alt="서울무악로타리클럽"></div>
+    <div class="hero-name-en">Seoul-Muak Rotary Club</div>
+    <p class="hero-motto">초아의 봉사 (Service Above Self) — 봉사를 통해 더 나은 세상을 만들어가는 사람들의 모임입니다.</p>
   </div>
 </section>
 
@@ -285,13 +309,13 @@
 
 <section id="about" class="alt-bg">
   <div class="container">
-    <h2 class="section-title">무악로타리 소개</h2>
-    <p class="section-sub">About Rotary Club of Seoul-Muak</p>
+    <h2 class="section-title">서울무악로타리 소개</h2>
+    <p class="section-sub">About Seoul-Muak Rotary Club</p>
     <div class="greeting" style="margin-bottom:36px;">
       <div class="greeting-text" style="flex:1;">
-        <p>서울무악로타리클럽은 1995년 10월 27일 163명의 창립회원으로 출범하여, 1996년 1월 11일 국제로타리(R.I.)로부터 정식 가입 승인을 받았습니다.</p>
-        <p>창립 이래 지금까지 매주 정기적인 주회를 통해 회원 간의 우정과 친목을 다지는 한편, 지역사회와 국제사회를 위한 다양한 봉사활동을 꾸준히 이어오고 있습니다. 소아마비 퇴치 캠페인, 지역아동센터 지원, 재해 구호 성금, 해외 자매클럽과의 국제봉사 등 로타리의 핵심 가치인 &ldquo;Service Above Self(초아의 봉사)&rdquo;를 실천해 왔습니다.</p>
-        <p>국제로타리 3650지구 7지역에 소속되어 있으며, 서울한강·서울소공·서울장안 등 인근 클럽들과 함께 지역 봉사 네트워크를 이루고 있습니다.</p>
+        <p>서울무악로타리클럽은 1995년 10월 27일 163명의 창립회원으로 출범하여, 1996년 1월 11일 Rotary International로부터 정식 가입 승인을 받았습니다.</p>
+        <p>창립 이래 지금까지 정기적인 주회를 통해 회원 간의 우정과 친목을 다지는 한편, 지역사회와 국제사회를 위한 다양한 봉사활동을 꾸준히 이어오고 있습니다. 소아마비 퇴치 캠페인, 지역아동센터 지원, 재해 구호 성금, 해외 자매클럽과의 국제봉사 등 로타리의 핵심 가치인 &ldquo;Service Above Self(초아의 봉사)&rdquo;를 실천해 왔습니다.</p>
+        <p>국제로타리 3650지구 7지역에 소속되어 있으며, 서울한강·서울화산 등 7지역 클럽들과 함께 지역 봉사 네트워크를 이루고 있습니다.</p>
       </div>
     </div>
     <div class="info-grid">
@@ -301,7 +325,7 @@
       </div>
       <div class="info-card">
         <div class="num">3650</div>
-        <div class="label">소속 지구 (국제로타리, 7지역)</div>
+        <div class="label">소속 지구</div>
       </div>
       <div class="info-card">
         <div class="num">격주 화요일</div>
@@ -314,9 +338,9 @@
 <section id="past-presidents">
   <div class="container">
     <h2 class="section-title">역대 회장</h2>
-    <p class="section-sub">Past Presidents (1대 ~ 33대)</p>
+    <p class="section-sub">Past Presidents (1대 ~ 31대)</p>
     <div style="overflow-x:auto;">
-    <table>
+    <table class="past-presidents-table">
       <tr><th style="width:70px;">대수</th><th style="width:100px;">회기</th><th>회장</th><th>총무</th></tr>
       <tr><td>1대</td><td>FY95-96</td><td>방우영</td><td>손세종</td></tr>
       <tr><td>2대</td><td>FY96-97</td><td>노경병</td><td>강철구</td></tr>
@@ -349,8 +373,6 @@
       <tr><td>29대</td><td>FY23-24</td><td>박은혜</td><td>이준구</td></tr>
       <tr><td>30대</td><td>FY24-25</td><td>강희주</td><td>이성원</td></tr>
       <tr><td>31대</td><td>FY25-26</td><td>안은숙</td><td>김지애</td></tr>
-      <tr><td>32대</td><td>FY26-27</td><td>이두원</td><td>고영섭</td></tr>
-      <tr><td>33대</td><td>FY27-28</td><td>오기호</td><td>-</td></tr>
     </table>
     </div>
   </div>
@@ -376,6 +398,15 @@
       </div>
     </div>
 
+    <div class="executive-officers" aria-label="주요 임원">
+      <div class="executive-card"><div class="role">클럽 트레이너(前총재)</div><div class="name">이순동, 김종문</div></div>
+      <div class="executive-card"><div class="role">차기회장</div><div class="name">오기호</div></div>
+      <div class="executive-card"><div class="role">재무</div><div class="name">강성태</div></div>
+      <div class="executive-card"><div class="role">부총무</div><div class="name">유재연, 서정수</div></div>
+      <div class="executive-card"><div class="role">사찰</div><div class="name">강희주</div></div>
+      <div class="executive-card"><div class="role">부사찰</div><div class="name">이종수, 박성근</div></div>
+    </div>
+
     <div class="committee-grid">
       <div class="committee-card">
         <div class="committee-head">클럽관리위원회</div>
@@ -383,19 +414,15 @@
           <tr><td class="role-cell">부회장</td><td class="name-cell">권보은</td></tr>
           <tr><td class="role-cell">위원장</td><td class="name-cell">정재규</td></tr>
           <tr><td class="role-cell">부위원장</td><td class="name-cell">한상민</td></tr>
-          <tr><td class="role-cell">사찰·역대회장</td><td class="name-cell">강희주</td></tr>
-          <tr><td class="role-cell">차기회장</td><td class="name-cell">오기호</td></tr>
-          <tr><td class="role-cell">부총무</td><td class="name-cell">서정수</td></tr>
         </table>
       </div>
 
       <div class="committee-card">
-        <div class="committee-head">회원위원회</div>
+        <div class="committee-head">멤버십위원회</div>
         <table>
           <tr><td class="role-cell">부회장</td><td class="name-cell">이민우</td></tr>
           <tr><td class="role-cell">위원장</td><td class="name-cell">김유돈</td></tr>
           <tr><td class="role-cell">부위원장</td><td class="name-cell">정 신</td></tr>
-          <tr><td class="role-cell">역대회장</td><td class="name-cell">김성일</td></tr>
         </table>
       </div>
 
@@ -405,8 +432,6 @@
           <tr><td class="role-cell">부회장</td><td class="name-cell">김명진</td></tr>
           <tr><td class="role-cell">위원장</td><td class="name-cell">유세현</td></tr>
           <tr><td class="role-cell">부위원장</td><td class="name-cell">황성원</td></tr>
-          <tr><td class="role-cell">재무</td><td class="name-cell">강성태</td></tr>
-          <tr><td class="role-cell">부총무</td><td class="name-cell">유재연</td></tr>
         </table>
       </div>
 
@@ -416,20 +441,15 @@
           <tr><td class="role-cell">부회장</td><td class="name-cell">고정림</td></tr>
           <tr><td class="role-cell">위원장</td><td class="name-cell">한용란</td></tr>
           <tr><td class="role-cell">부위원장</td><td class="name-cell">김연수</td></tr>
-          <tr><td class="role-cell">역대회장</td><td class="name-cell">유재훈</td></tr>
-          <tr><td class="role-cell">역대회장</td><td class="name-cell">이상우</td></tr>
-          <tr><td class="role-cell">부사찰·송리더</td><td class="name-cell">박성근</td></tr>
         </table>
       </div>
 
       <div class="committee-card">
-        <div class="committee-head">홍보위원회</div>
+        <div class="committee-head">공공이미지위원회</div>
         <table>
           <tr><td class="role-cell">부회장</td><td class="name-cell">이준구</td></tr>
           <tr><td class="role-cell">위원장</td><td class="name-cell">문승현</td></tr>
           <tr><td class="role-cell">부위원장</td><td class="name-cell">이상영</td></tr>
-          <tr><td class="role-cell">역대회장</td><td class="name-cell">이재찬</td></tr>
-          <tr><td class="role-cell">역대회장</td><td class="name-cell">최진욱</td></tr>
         </table>
       </div>
     </div>
@@ -439,9 +459,9 @@
 <section id="news" class="alt-bg">
   <div class="container">
     <h2 class="section-title">활동소식 및 공지사항</h2>
-    <p class="section-sub">News & Notices</p>
+    <p class="section-sub">News &amp; Notices</p>
     <div class="board-tools">
-      <p class="board-count">전체 <strong>3</strong>건</p>
+      <p class="board-count">전체 <strong>6</strong>건</p>
       <form class="board-search" onsubmit="return false;" aria-label="게시물 검색">
         <select aria-label="검색 범위"><option>전체</option><option>제목</option><option>내용</option></select>
         <input type="search" placeholder="검색어를 입력해 주세요" aria-label="검색어">
@@ -450,9 +470,30 @@
     </div>
     <div class="news-board">
       <div class="board-row board-head" aria-hidden="true"><span>번호</span><span>제목</span><span class="attachment">첨부</span><span class="author">작성자</span><span>등록일</span></div>
-      <details class="news-detail"><summary class="board-row"><span>3</span><span class="board-title"><b class="category">[공지]</b>서울무악로타리클럽 창립31주년 기념주회</span><span class="attachment">-</span><span class="author">관리자</span><span>26.10.23</span></summary><div class="news-body"><h3>서울무악로타리클럽 창립31주년 기념주회</h3><ul><li><strong>일시:</strong> 2026년 10월27일 (화) 오후6:30</li><li><strong>장소:</strong> 서울클럽</li></ul><p><strong>주요 내용:</strong> 서울무악로타리클럽은 창립31주년을 기념하기 위한 만찬주회를 개최할 예정입니다.</p></div></details>
-      <details class="news-detail"><summary class="board-row"><span>2</span><span class="board-title"><b class="category">[행사]</b>가을 골프대회 개최</span><span class="attachment">📎</span><span class="author">재단위원회</span><span>26.09.19</span></summary><div class="news-body"><h3>가을 골프대회 개최</h3><ul><li><strong>일시:</strong> 2026년 9월19일 오후1시</li><li><strong>장소:</strong> 오렌지듄스 영종</li></ul><p><strong>주요 내용:</strong> 서울무악로타리 재단위원회 (위원장: 유세현) 주관으로 2026년 가을 골프대회를 개최함</p><div class="news-gallery"><a href="events/golf-2026/course-group.jpg" target="_blank" rel="noopener"><img src="events/golf-2026/course-group.jpg" alt="2026년 서울무악로타리 가을 골프대회 참가자 단체사진" loading="lazy"></a><a href="events/golf-2026/dinner-group.jpg" target="_blank" rel="noopener"><img src="events/golf-2026/dinner-group.jpg" alt="2026년 서울무악로타리 가을 골프대회 참가자 식사 모임" loading="lazy"></a></div></div></details>
-      <details class="news-detail"><summary class="board-row"><span>1</span><span class="board-title"><b class="category">[행사]</b>제32대 이두원 회장 취임식</span><span class="attachment">📎</span><span class="author">관리자</span><span>26.06.23</span></summary><div class="news-body"><h3>제32대 이두원 회장 취임식</h3><ul><li><strong>일시:</strong> 2026년 6월23일</li><li><strong>장소:</strong> 서울클럽</li></ul><p><strong>주요 내용:</strong> 서울무악로타리 제31대 회장으로 이두원 연세대학교 경제학부 교수가 취임하였다. 임기는 2026년 7월1일부터 2027년 6월30일까지이다.</p><div class="news-gallery"><a href="events/inauguration-2026/ceremony-group.jpg" target="_blank" rel="noopener"><img src="events/inauguration-2026/ceremony-group.jpg" alt="제32대 이두원 회장 취임식 단체사진" loading="lazy"></a><a href="events/inauguration-2026/president-speech.jpg" target="_blank" rel="noopener"><img src="events/inauguration-2026/president-speech.jpg" alt="제32대 이두원 회장 취임사" loading="lazy"></a></div></div></details>
+      <details class="news-detail">
+        <summary class="board-row"><span>6</span><span class="board-title"><b class="category">[공지]</b>2026년 송년모임</span><span class="attachment">-</span><span class="author">관리자</span><span>26.12.22</span></summary>
+        <div class="news-body"><h3>2026년 송년모임</h3><ul><li><strong>일시:</strong> 2026년 12월22일 오후7:30</li><li><strong>장소:</strong> 연세대학교 백양누리 그랜드볼룸A</li></ul><p><strong>주요 내용:</strong> 송년의 밤 행사를 &ldquo;무악드림메이커스 발표회&rdquo;와 함께 진행합니다.</p></div>
+      </details>
+      <details class="news-detail">
+        <summary class="board-row"><span>5</span><span class="board-title"><b class="category">[공지]</b>서울무악로타리클럽 창립31주년 기념주회</span><span class="attachment">📎</span><span class="author">관리자</span><span>26.10.27</span></summary>
+        <div class="news-body"><h3>서울무악로타리클럽 창립31주년 기념주회</h3><ul><li><strong>일시:</strong> 2026년 10월27일 (화) 오후6:30</li><li><strong>장소:</strong> 서울클럽 2층 한라산룸</li></ul><p><strong>주요 내용:</strong> 서울무악로타리클럽은 창립31주년을 기념하기 위한 만찬주회를 개최할 예정입니다.</p><div class="news-gallery"><a href="events/anniversary-2026/31st-anniversary-poster.jpg" target="_blank" rel="noopener"><img src="events/anniversary-2026/31st-anniversary-poster.jpg" alt="서울무악로타리클럽 창립31주년 기념주회 안내" loading="lazy"></a></div></div>
+      </details>
+      <details class="news-detail">
+        <summary class="board-row"><span>4</span><span class="board-title"><b class="category">[봉사]</b>그루터기배움터 지역아동센터 추석맞이 마트 장보기</span><span class="attachment">📎</span><span class="author">관리자</span><span>26.09.22</span></summary>
+        <div class="news-body"><h3>그루터기배움터 지역아동센터 추석맞이 마트 장보기</h3><ul><li><strong>일시:</strong> 2026년 9월22일 (화) 오후4시~6시</li><li><strong>장소:</strong> 신도림 테크노마트 B2F 이마트</li></ul><p><strong>주요 내용:</strong> 회원과 그루터기배움터 지역아동센터 아동들이 한조를 이루어 한시간 동안 쇼핑을 한후 함께 저녁식사를 하는 일정입니다. 회원 여러분의 많은 참석 바랍니다.</p><div class="news-gallery"><a href="events/community-service-2026/chuseok-shopping-poster.png" target="_blank" rel="noopener"><img src="events/community-service-2026/chuseok-shopping-poster.png" alt="그루터기배움터 지역아동센터 추석맞이 마트 장보기 안내" loading="lazy"></a></div></div>
+      </details>
+      <details class="news-detail">
+        <summary class="board-row"><span>3</span><span class="board-title"><b class="category">[행사]</b>가을 골프대회 개최</span><span class="attachment">📎</span><span class="author">재단위원회</span><span>26.09.19</span></summary>
+        <div class="news-body"><h3>가을 골프대회 개최</h3><ul><li><strong>일시:</strong> 2026년 9월19일 (토) 오후1시</li><li><strong>장소:</strong> 오렌지듄스 영종 CC</li></ul><p><strong>주요 내용:</strong> 서울무악로타리 재단위원회 (위원장: 유세현) 주관으로 2026년 가을 골프대회를 개최함</p><div class="news-gallery"><a href="events/golf-2026/golf-tournament-poster.jpg" target="_blank" rel="noopener"><img src="events/golf-2026/golf-tournament-poster.jpg" alt="2026년 서울무악로타리 친선골프대회 안내" loading="lazy"></a><a href="events/golf-2026/course-group.jpg" target="_blank" rel="noopener"><img src="events/golf-2026/course-group.jpg" alt="2026년 서울무악로타리 가을 골프대회 참가자 단체사진" loading="lazy"></a><a href="events/golf-2026/dinner-group.jpg" target="_blank" rel="noopener"><img src="events/golf-2026/dinner-group.jpg" alt="2026년 서울무악로타리 가을 골프대회 참가자 식사 모임" loading="lazy"></a></div></div>
+      </details>
+      <details class="news-detail">
+        <summary class="board-row"><span>2</span><span class="board-title"><b class="category">[행사]</b>RI3650 김진환 총재 공식방문 주회</span><span class="attachment">📎</span><span class="author">관리자</span><span>26.09.08</span></summary>
+        <div class="news-body"><h3>RI3650 김진환 총재 공식방문 주회</h3><ul><li><strong>일시:</strong> 2026년 9월8일 (화) 낮12시</li><li><strong>장소:</strong> 서울클럽 2층 지리산룸</li><li><strong>연사:</strong> 김진환 총재</li></ul><p><strong>9월 생일회원:</strong> 2일 한동영, 4일 김진홍, 6일 박찬복, 17일(음8.7) 박기호, 19일 권보은, 23일 윤수아, 27일 이재찬</p><div class="news-gallery"><a href="events/governor-visit-2026/official-visit-poster.png" target="_blank" rel="noopener"><img src="events/governor-visit-2026/official-visit-poster.png" alt="RI3650 김진환 총재 공식방문 주회 안내" loading="lazy"></a></div></div>
+      </details>
+      <details class="news-detail">
+        <summary class="board-row"><span>1</span><span class="board-title"><b class="category">[행사]</b>제32대 이두원 회장 취임식</span><span class="attachment">📎</span><span class="author">관리자</span><span>26.06.23</span></summary>
+        <div class="news-body"><h3>제32대 이두원 회장 취임식</h3><ul><li><strong>일시:</strong> 2026년 6월23일</li><li><strong>장소:</strong> 서울클럽</li></ul><p><strong>주요 내용:</strong> 서울무악로타리 제31대 회장으로 이두원 연세대학교 경제학부 교수가 취임하였다. 임기는 2026년 7월1일부터 2027년 6월30일까지이다.</p><div class="news-gallery"><a href="events/inauguration-2026/ceremony-group.jpg" target="_blank" rel="noopener"><img src="events/inauguration-2026/ceremony-group.jpg" alt="제32대 이두원 회장 취임식 단체사진" loading="lazy"></a><a href="events/inauguration-2026/president-speech.jpg" target="_blank" rel="noopener"><img src="events/inauguration-2026/president-speech.jpg" alt="제32대 이두원 회장 취임사" loading="lazy"></a></div></div>
+      </details>
       <p class="board-empty">검색 결과가 없습니다.</p>
     </div>
   </div>
@@ -722,7 +763,7 @@
 <section id="location" class="alt-bg">
   <div class="container">
     <h2 class="section-title">정기 모임 장소 오시는 길</h2>
-    <p class="section-sub">Location & Contact</p>
+    <p class="section-sub">Location &amp; Contact</p>
     <div class="map-box">
       <iframe
         src="https://www.google.com/maps?q=%EC%84%9C%EC%9A%B8%ED%81%B4%EB%9F%BD%20%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C%20%EC%A4%91%EA%B5%AC%20%EC%9E%A5%EC%B6%A9%EB%8B%A8%EB%A1%9C%2086&amp;output=embed"
@@ -739,14 +780,35 @@
     </div>
   </div>
 </section>
+</main>
 
 <footer>
   <div class="fname">서울무악로타리클럽</div>
-  <p>국제로타리 3690지구 · Rotary International District 3690</p>
-  <p style="margin-top:10px;">© 2026 Rotary Club of Seoul-Muak. All rights reserved.</p>
+  <p>국제로타리 3650지구 · Rotary International District 3650</p>
+  <p style="margin-top:10px;">© 2026 Seoul-Muak Rotary Club. All rights reserved.</p>
 </footer>
 
 <script>
+  const menuToggle = document.querySelector('.menu-toggle');
+  const siteNav = document.querySelector('#site-nav');
+
+  const closeMobileMenu = () => {
+    siteNav.classList.remove('mobile-open');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    menuToggle.setAttribute('aria-label', '메뉴 열기');
+  };
+
+  menuToggle.addEventListener('click', () => {
+    const isOpen = siteNav.classList.toggle('mobile-open');
+    menuToggle.setAttribute('aria-expanded', String(isOpen));
+    menuToggle.setAttribute('aria-label', isOpen ? '메뉴 닫기' : '메뉴 열기');
+  });
+
+  siteNav.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMobileMenu));
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) closeMobileMenu();
+  });
+
   const newsSearchForm = document.querySelector('.board-search');
   const newsItems = [...document.querySelectorAll('.news-detail')];
   const newsCount = document.querySelector('.board-count strong');
