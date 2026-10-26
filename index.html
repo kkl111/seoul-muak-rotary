@@ -39,9 +39,13 @@
     padding:16px 20px;max-width:1100px;margin:0 auto;
   }
   .logo{
-    display:flex;align-items:center;min-width:0;
+    display:block;position:relative;width:190px;height:74px;
+    overflow:hidden;min-width:0;flex-shrink:0;
   }
-  .logo img{width:220px;height:auto;max-height:54px;object-fit:contain;object-position:left center;}
+  .logo img{
+    position:absolute;left:50%;top:50%;width:190px;height:auto;max-height:none;
+    transform:translate(-50%,-50%);
+  }
   nav ul{display:flex;gap:28px;}
   nav a{font-size:15px;font-weight:500;color:var(--text-dark);}
   nav a:hover{color:var(--rotary-azure);}
@@ -56,10 +60,13 @@
   .hero p{font-size:16px;color:#DCE7F7;margin:0 auto;}
   .hero-motto{white-space:nowrap;}
   .hero-brand{
-    width:min(680px,92%);margin:0 auto 14px;padding:22px 34px;
-    border-radius:12px;background:#fff;box-shadow:0 8px 24px rgba(0,0,0,.13);
+    position:relative;width:min(680px,92%);height:210px;margin:0 auto 14px;
+    overflow:hidden;border-radius:12px;background:#fff;box-shadow:0 8px 24px rgba(0,0,0,.13);
   }
-  .hero-brand img{width:100%;height:auto;object-fit:contain;}
+  .hero-brand img{
+    position:absolute;left:50%;top:50%;width:100%;height:auto;max-width:none;
+    transform:translate(-50%,-50%);
+  }
   .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
   /* Section common */
   section{padding:64px 0;}
@@ -211,7 +218,8 @@
 
   @media (max-width:768px){
     .header-inner{position:relative;padding:12px 16px;}
-    .logo img{width:min(210px,64vw);max-height:48px;}
+    .logo{width:min(170px,58vw);height:66px;}
+    .logo img{width:100%;max-height:none;}
     nav{display:none;position:absolute;top:100%;left:0;right:0;background:#fff;border-top:1px solid var(--border);border-bottom:1px solid var(--border);box-shadow:0 8px 18px rgba(0,0,0,.08);}
     nav.mobile-open{display:block;}
     nav ul{display:grid;grid-template-columns:repeat(2,1fr);gap:0;padding:8px 14px 14px;}
@@ -223,7 +231,7 @@
     .committee-grid{grid-template-columns:1fr;}
     .hero h1{font-size:24px;}
     .hero{padding:52px 16px;}
-    .hero-brand{padding:12px 18px;}
+    .hero-brand{height:160px;}
     .hero-motto{white-space:normal;}
     table th{width:110px;font-size:13px;}
     .board-tools{align-items:flex-start;flex-direction:column;}
@@ -252,7 +260,7 @@
 <header>
   <div class="header-inner">
     <a class="logo" href="./" aria-label="Seoul-Muak Rotary Club 홈">
-      <img src="assets/logos/seoul-muak-official-en.png" alt="Rotary Seoul-Muak RC">
+      <img src="assets/logos/seoul-muak-header-1792997163073.png" alt="Seoul-Muak Rotary Club">
     </a>
     <nav id="site-nav" aria-label="주요 메뉴">
       <ul>
@@ -274,7 +282,7 @@
 <section class="hero">
   <div class="container">
     <h1 class="sr-only">서울무악로타리클럽</h1>
-    <div class="hero-brand"><img src="assets/logos/seoul-muak-district-3650-lockup.png" alt="Rotary 3650지구 서울무악로타리클럽"></div>
+    <div class="hero-brand"><img src="assets/logos/seoul-muak-hero-1792997163131.png" alt="Rotary 서울무악로타리클럽"></div>
     <p class="hero-motto">초아의 봉사 (Service Above Self) — 봉사를 통해 더 나은 세상을 만들어가는 사람들의 모임입니다.</p>
   </div>
 </section>
@@ -475,7 +483,7 @@
       </details>
       <details class="news-detail">
         <summary class="board-row"><span>3</span><span class="board-title"><b class="category">[행사]</b>가을 골프대회 개최</span><span class="attachment">📎</span><span class="author">재단위원회</span><span>26.09.19</span></summary>
-        <div class="news-body"><h3>가을 골프대회 개최</h3><ul><li><strong>일시:</strong> 2026년 9월19일 (토) 오후1시</li><li><strong>장소:</strong> 오렌지듄스 영종 CC</li></ul><p><strong>주요 내용:</strong> 서울무악로타리 재단위원회 (위원장: 유세현) 주관으로 2026년 가을 골프대회를 개최함</p><div class="news-gallery"><a href="events/golf-2026/golf-tournament-poster.jpg" target="_blank" rel="noopener"><img src="events/golf-2026/golf-tournament-poster.jpg" alt="2026년 서울무악로타리 친선골프대회 안내" loading="lazy"></a><a href="events/golf-2026/course-group.jpg" target="_blank" rel="noopener"><img src="events/golf-2026/course-group.jpg" alt="2026년 서울무악로타리 가을 골프대회 참가자 단체사진" loading="lazy"></a><a href="events/golf-2026/dinner-group.jpg" target="_blank" rel="noopener"><img src="events/golf-2026/dinner-group.jpg" alt="2026년 서울무악로타리 가을 골프대회 참가자 식사 모임" loading="lazy"></a></div></div>
+        <div class="news-body"><h3>가을 골프대회 개최</h3><ul><li><strong>일시:</strong> 2026년 9월19일 (토) 오후1시</li><li><strong>장소:</strong> 오렌지듄스 영종 CC</li></ul><p><strong>주요 내용:</strong> 서울무악로타리클럽 로타리재단위원회(위원장 유세현) 주관으로 2026년 가을 친선 골프대회를 개최하여 회원 간의 화합과 우정을 다지는 뜻깊은 시간을 가졌습니다.</p><div class="news-gallery"><a href="events/golf-2026/golf-tournament-poster.jpg" target="_blank" rel="noopener"><img src="events/golf-2026/golf-tournament-poster.jpg" alt="2026년 서울무악로타리 친선골프대회 안내" loading="lazy"></a><a href="events/golf-2026/course-group.jpg" target="_blank" rel="noopener"><img src="events/golf-2026/course-group.jpg" alt="2026년 서울무악로타리 가을 골프대회 참가자 단체사진" loading="lazy"></a><a href="events/golf-2026/dinner-group.jpg" target="_blank" rel="noopener"><img src="events/golf-2026/dinner-group.jpg" alt="2026년 서울무악로타리 가을 골프대회 참가자 식사 모임" loading="lazy"></a></div></div>
       </details>
       <details class="news-detail">
         <summary class="board-row"><span>2</span><span class="board-title"><b class="category">[행사]</b>RI3650 김진환 총재 공식방문 주회</span><span class="attachment">📎</span><span class="author">관리자</span><span>26.09.08</span></summary>
@@ -483,7 +491,7 @@
       </details>
       <details class="news-detail">
         <summary class="board-row"><span>1</span><span class="board-title"><b class="category">[행사]</b>제32대 이두원 회장 취임식</span><span class="attachment">📎</span><span class="author">관리자</span><span>26.06.23</span></summary>
-        <div class="news-body"><h3>제32대 이두원 회장 취임식</h3><ul><li><strong>일시:</strong> 2026년 6월23일</li><li><strong>장소:</strong> 서울클럽</li></ul><p><strong>주요 내용:</strong> 서울무악로타리 제31대 회장으로 이두원 연세대학교 경제학부 교수가 취임하였다. 임기는 2026년 7월1일부터 2027년 6월30일까지이다.</p><div class="news-gallery"><a href="events/inauguration-2026/ceremony-group.jpg" target="_blank" rel="noopener"><img src="events/inauguration-2026/ceremony-group.jpg" alt="제32대 이두원 회장 취임식 단체사진" loading="lazy"></a><a href="events/inauguration-2026/president-speech.jpg" target="_blank" rel="noopener"><img src="events/inauguration-2026/president-speech.jpg" alt="제32대 이두원 회장 취임사" loading="lazy"></a></div></div>
+        <div class="news-body"><h3>제32대 이두원 회장 취임식</h3><ul><li><strong>일시:</strong> 2026년 6월23일</li><li><strong>장소:</strong> 서울클럽</li></ul><p><strong>주요 내용:</strong> 서울무악로타리클럽 제32대 회장으로 이두원 회원(연세대학교 경제학부 교수)이 취임하였습니다. 제32대 회장단의 임기는 2026년 7월 1일부터 2027년 6월 30일까지입니다.</p><div class="news-gallery"><a href="events/inauguration-2026/ceremony-group.jpg" target="_blank" rel="noopener"><img src="events/inauguration-2026/ceremony-group.jpg" alt="제32대 이두원 회장 취임식 단체사진" loading="lazy"></a><a href="events/inauguration-2026/president-speech.jpg" target="_blank" rel="noopener"><img src="events/inauguration-2026/president-speech.jpg" alt="제32대 이두원 회장 취임사" loading="lazy"></a></div></div>
       </details>
       <p class="board-empty">검색 결과가 없습니다.</p>
     </div>
